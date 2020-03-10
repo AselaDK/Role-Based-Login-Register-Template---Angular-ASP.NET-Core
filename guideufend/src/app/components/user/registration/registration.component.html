@@ -1,1 +1,42 @@
-<p>registration works!</p>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="row" style="height: 450px;" > 
+            <div class="col-md-12 my-auto side-header">
+                <img src="/assets/img/add_user.png" class="mx-auto d-block" >
+                <h1>Registration</h1>
+                <p>#guidebeyondthesky</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <form [formGroup]="service.formModel" autocomplete="off" >
+            <div class="form-group required">
+                <label>Username</label>
+                <input class="form-control" formControlName="UserName">
+            </div>
+            <div class="form-group required">
+                <label>Email</label>
+                <input class="form-control" formControlName="Email">
+            </div>
+            <div class="form-group required">
+                <label>Full Name</label>
+                <input class="form-control" formControlName="Fullnmae">
+            </div>
+            <div formGroupName="Passwords" >
+                <div class="form-group required">
+                    <label>Password</label>
+                    <input class="form-control" formControlName="Password">
+                </div>
+                <div class="form-group required">
+                    <label>Confirm Password</label>
+                    <input class="form-control" formControlName="ConfirmPassword">
+                </div>
+            </div>
+            <div class="form-row" >
+                <div class="form-group col-md-8 offset-md-2">
+                    <button type="submit" class="btn btn-lg btn-block">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
