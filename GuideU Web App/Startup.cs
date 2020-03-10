@@ -36,6 +36,7 @@ namespace GuideU_Web_App
             services.AddDbContext<AuthenticationContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
+            // ApplicationUserControl will dependency injecthere
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
         }

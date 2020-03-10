@@ -23,5 +23,33 @@ namespace GuideU_Web_App.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
+        //Web API Method for Registration
+        [HttpPost]
+        [Route("Register")]
+        //POST : /api/ApplicationUser/Register
+        public async Task<Object> PostApplicationUser(ApplicationUserModel model)     // this method will pass fullname/pwd/... details
+        {
+            // this model has details of registering user,
+            // so we have to create it as Identity User
+
+            var applicationUser = new ApplicationUser()
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                FullName = model.FullName
+            };
+
+            try
+            {
+                var result = await _userManager.CreateAsync(applicationUser, model.Password);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
     }
 }
