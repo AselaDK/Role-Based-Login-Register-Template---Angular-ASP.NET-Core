@@ -8,6 +8,8 @@ import { RegistrationComponent } from './components/user/registration/registrati
 import { ReactiveFormsModule } from "@angular/forms";
 import { UserService } from './services/user.service';
 import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,11 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      progressBar: true
+    })
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

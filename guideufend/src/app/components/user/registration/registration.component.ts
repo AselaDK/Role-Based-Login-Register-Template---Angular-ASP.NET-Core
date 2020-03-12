@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -8,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(public service: UserService) { }
+  constructor(public service: UserService, private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.service.formModel.reset();
@@ -16,22 +17,26 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(){
     this.service.register().subscribe(
-      (res:any) => {
+      (res:any) => {    // success function
         if(res.succeeded){
-          this.service.formModel.reset();   
+          this.service.formModel.reset(); 
+          this.toastr.success('New user created', 'Registration Successfull.');
         }else{
           res.errors.forEach(element => {
             switch (element.code) {
               case 'DuplicateUserName':
                 // Username is already taken
+                this.toastr.error('Username is already taken', 'Registration Failed.');
                 break;
               default:
                 //registration failed
+                this.toastr.error(element.description, 'Registration Failed.');
                 break;
             }
           });
         }
-      }, //success function
+      },
+
       err => {   // error functions
         console.log(err);
       }
