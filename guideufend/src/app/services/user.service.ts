@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private http:HttpClient) { }
+  readonly BaseURI = 'http://localhost:57169/api';
 
+  // form validations
   formModel = this.fb.group({
     UserName: ["", Validators.required],
     Email: ["", [Validators.required, Validators.email]],
@@ -18,6 +21,7 @@ export class UserService {
     }, {validator: this.comparePasswords})
   });
 
+  //conpare confirm password field for form validations
   comparePasswords(fb:FormGroup){
     let confirmPswrdCtrl = fb.get('ConfirmPassword');
     //password mismatch
@@ -28,4 +32,16 @@ export class UserService {
         confirmPswrdCtrl.setErrors(null);
     }
   }
+
+  //register function for button signup
+  register(){
+    var body = {
+      UserName: this.formModel.value.UserName,
+      Email: this.formModel.value.Email,
+      FullName: this.formModel.value.FullName,
+      Password: this.formModel.value.Passwords.Password
+    };
+    return this.http.post(this.BaseURI+'/ApplicationUser/Register', body);
+  }
+
 }
