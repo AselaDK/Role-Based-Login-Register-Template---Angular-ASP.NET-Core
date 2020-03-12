@@ -47,6 +47,8 @@ namespace GuideU_Web_App
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
             });
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +58,12 @@ namespace GuideU_Web_App
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                );
 
             app.UseAuthentication();
 
