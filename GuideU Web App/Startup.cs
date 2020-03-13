@@ -15,7 +15,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.HttpsPolicy;
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace GuideU_Web_App
 {
@@ -49,6 +51,34 @@ namespace GuideU_Web_App
             });
 
             services.AddCors();
+
+            // JWT Authentication
+
+            var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:JWT_Secret"].ToString());
+
+            services.AddAuthentication(x =>
+            {
+                // setting authentication schemas
+                // 1st install JwtBearerDefault thing nuget
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer(x=> {       // configuring jwt itself through AddJwtBearer function
+                x.RequireHttpsMetadata = false;     // restrict only to https
+                x.SaveToken = false;                // saving token in server or not
+                x.TokenValidationParameters = new TokenValidationParameters  // how we validate the token once it receives from the client
+                {
+                    ValidateIssuerSigningKey = true,    // system will validate the signin key during the security validations
+                    IssuerSigningKey = new SymmetricSecurityKey(key),   // assign key inside this IssuerSignInKey
+                    ValidateIssuer = false,     // who generates the Token = Issuer
+                    ValidateAudience = false,   // who receives the Token = Audience
+                    ClockSkew = TimeSpan.Zero   // check expiration time of Token
+                };
+            });
+
+            //
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +90,7 @@ namespace GuideU_Web_App
             }
 
             app.UseCors(builder =>
-                builder.WithOrigins("http://localhost:4200")
+                builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 );

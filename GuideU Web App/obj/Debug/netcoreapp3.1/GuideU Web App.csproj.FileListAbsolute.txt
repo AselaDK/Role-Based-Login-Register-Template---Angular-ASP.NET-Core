@@ -125,4 +125,10 @@ C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.
 C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\obj\Debug\netcoreapp3.1\GuideU Web App.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
