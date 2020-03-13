@@ -132,3 +132,4 @@ C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.
 C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\asela\source\repos\GuideU-Project\GuideU Web App\obj\Debug\netcoreapp3.1\GuideU Web App.MvcApplicationPartsAssemblyInfo.cache
