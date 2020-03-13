@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using GuideU_Web_App.Models;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace GuideU_Web_App.Controllers
 {
@@ -20,7 +24,7 @@ namespace GuideU_Web_App.Controllers
         //inject these classes to this controller constructor
         public ApplicationUserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
-            _userManager = userManager;
+            _userManager = userManager; // check wether a user in given username
             _signInManager = signInManager;
         }
 
@@ -50,6 +54,38 @@ namespace GuideU_Web_App.Controllers
                 throw;
             }
 
+        }
+
+        // Login method
+        [HttpPost]
+        [Route("Login")]
+        //POST : /api/ApplicationUser/Login
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            // check user is there
+            var user = await _userManager.FindByNameAsync(model.UserName);
+            // check user with given username & password
+            if(user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+            {
+                var tokenDiscriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                        new Claim("UserID", user.Id.ToString())
+                    }),
+                    Expires = DateTime.UtcNow.AddMinutes(5),    // Token will be expired after 5 mins of token generation
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1234567890123456")), 
+                                                                    SecurityAlgorithms.HmacSha256Signature)
+                };
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var securityToken = tokenHandler.CreateToken(tokenDiscriptor);
+                var token = tokenHandler.WriteToken(securityToken);
+                return Ok(new { token });
+            }
+            else
+            {
+                return BadRequest(new { message = "Username or password is incorrect." });
+            }
         }
     }
 }
