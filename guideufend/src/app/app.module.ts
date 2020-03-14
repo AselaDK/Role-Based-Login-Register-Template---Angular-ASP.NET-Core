@@ -7,11 +7,12 @@ import { UserComponent } from './components/user/user.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { UserService } from './services/user.service';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './components/user/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthInterceptor } from "./auth/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,13 @@ import { HomeComponent } from './components/home/home.component';
     }),
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

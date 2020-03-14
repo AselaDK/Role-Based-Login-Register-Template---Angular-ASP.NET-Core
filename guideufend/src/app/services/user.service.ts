@@ -51,7 +51,6 @@ export class UserService {
 
   // load user profile after login
   getUserProfile(){
-    var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('token')}) //jwt token for the request
-    return this.http.get(this.BaseURI + '/UserProfile', {headers: tokenHeader});
+    return this.http.get(this.BaseURI + '/UserProfile');  // this request is through interceptor
   }
 }
