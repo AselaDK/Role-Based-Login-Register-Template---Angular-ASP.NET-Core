@@ -53,4 +53,19 @@ export class UserService {
   getUserProfile(){
     return this.http.get(this.BaseURI + '/UserProfile');  // this request is through interceptor
   }
+
+  // check user has permission for access that route
+  roleMatch(allowedRoles): boolean {
+    var isMatch = false;
+    var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1])); // decrypt the token payload // in web api->ApplicationUserController.cs->Subject is there 
+    var userRoles = payLoad.role; // get role/s
+    allowedRoles.forEach(element => {   // check that role is in allowed roles
+      if(userRoles == element){
+        isMatch = true;
+        return false;
+      }
+    });
+    return isMatch;
+  }
+
 }

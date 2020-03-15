@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './components/user/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from "./auth/auth.interceptor";
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AuthInterceptor } from "./auth/auth.interceptor";
     UserComponent,
     RegistrationComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AdminPanelComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
