@@ -66,7 +66,7 @@ namespace GuideU_Web_App.Controllers
         public async Task<IActionResult> Login(LoginModel model)
         {
             // check user is there
-            var user = await _userManager.FindByNameAsync(model.UserName);
+            var user = await _userManager.FindByEmailAsync(model.Email);
             // check user with given username & password
             if(user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {

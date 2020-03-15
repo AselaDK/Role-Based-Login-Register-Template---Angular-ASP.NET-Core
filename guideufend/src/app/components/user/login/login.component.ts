@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   // properties for form
   formModel = {
-    UserName: '',
+    Email: '',
     Password: ''
   }
 
