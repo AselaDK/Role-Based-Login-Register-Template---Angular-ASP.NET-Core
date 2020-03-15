@@ -40,6 +40,9 @@ namespace GuideU_Web_App.Controllers
             // this model has details of registering user,
             // so we have to create it as Identity User
 
+            //provide the role manually
+            model.Role = "Traveller";
+
             var applicationUser = new ApplicationUser()
             {
                 UserName = model.UserName,
@@ -50,6 +53,8 @@ namespace GuideU_Web_App.Controllers
             try
             {
                 var result = await _userManager.CreateAsync(applicationUser, model.Password);
+                //Add role
+                await _userManager.AddToRoleAsync(applicationUser, model.Role);
                 return Ok(result);
             }
             catch (Exception)
@@ -70,11 +75,16 @@ namespace GuideU_Web_App.Controllers
             // check user with given username & password
             if(user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
+                // set for User Role routes, get Roles assigned for users when login
+                var role = await _userManager.GetRolesAsync(user);
+                IdentityOptions _optons = new IdentityOptions();
+
                 var tokenDiscriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                        new Claim("UserID", user.Id.ToString())
+                        new Claim("UserID", user.Id.ToString()),    // user claim
+                        new Claim(_optons.ClaimsIdentity.RoleClaimType, role.FirstOrDefault())     // role claim
                     }),
                     Expires = DateTime.UtcNow.AddMinutes(5),    // Token will be expired after 5 mins of token generation
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)), 

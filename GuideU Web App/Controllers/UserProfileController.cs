@@ -40,5 +40,44 @@ namespace GuideU_Web_App.Controllers
             };
         }
 
+        // new get method for role Admin
+        [HttpGet]
+        [Authorize(Roles ="Admin")]
+        [Route("ForAdmin")]
+        // GET : api/UserProfile/ForAdmin
+        public string GetForAdmin()
+        {
+            return "Web Method for Admin";
+        }
+
+        // new get method for role Traveller
+        [HttpGet]
+        [Authorize(Roles = "Traveller")]
+        [Route("ForTraveller")]
+        // GET : api/UserProfile/ForTraveller
+        public string GetForTraveller()
+        {
+            return "Web Method for Traveller";
+        }
+
+        // new get method for role Guider
+        [HttpGet]
+        [Authorize(Roles = "Guider")]
+        [Route("ForGuider")]
+        // GET : api/UserProfile/ForGuider
+        public string GetForGuider()
+        {
+            return "Web Method for Guider";
+        }
+
+        // new get method for roles Admin Or Traveller Or Guider
+        [HttpGet]
+        [Authorize(Roles = "Admin,Traveller,Guider")]
+        [Route("ForAdminOrTravellerOrGuider")]
+        public string GetForAdminOrTravellerOrGuider()
+        {
+            return "Web Method for Admin Or Traveller Or Guider";
+        }
+
     }
 }

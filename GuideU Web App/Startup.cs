@@ -43,6 +43,7 @@ namespace GuideU_Web_App
 
             // ApplicationUserControl will dependency injecthere
             services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddRoles<IdentityRole>()   // to add roles
                 .AddEntityFrameworkStores<AuthenticationContext>();
 
             services.Configure<IdentityOptions>(options =>
