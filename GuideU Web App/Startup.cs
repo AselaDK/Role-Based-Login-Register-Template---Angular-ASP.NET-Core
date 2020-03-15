@@ -51,6 +51,7 @@ namespace GuideU_Web_App
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
+                options.User.RequireUniqueEmail = true;
             });
 
             services.AddCors();

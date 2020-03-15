@@ -9,6 +9,7 @@ namespace GuideU_Web_App.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        //custom column for identity
         [Column(TypeName = "nvarchar(150)")]
         public string FullName  { get; set; }
     }

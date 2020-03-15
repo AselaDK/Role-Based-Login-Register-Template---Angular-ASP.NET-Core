@@ -21,7 +21,7 @@ export class UserService {
     }, {validator: this.comparePasswords})
   });
 
-  //conpare confirm password field for form validations
+  //compare confirm password field for form validations
   comparePasswords(fb:FormGroup){
     let confirmPswrdCtrl = fb.get('ConfirmPassword');
     //password mismatch
