@@ -10,7 +10,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 
 
 const routes: Routes = [
-  { path:'', redirectTo: '/user/login', pathMatch:'full'},
+  { path:'', redirectTo: '/user', pathMatch:'full'},
   {
     path:'user', component:UserComponent,
     children: [
