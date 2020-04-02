@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\asela\\source\\repos\\GuideU-Project\\GuideU Web App\\GuideU Web App.csproj": {}
+    "C:\\Users\\asela\\source\\repos\\GuideU-Project\\GuideU Web App\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\asela\\source\\repos\\GuideU-Project\\GuideU Web App\\GuideU Web App.csproj": {
+    "C:\\Users\\asela\\source\\repos\\GuideU-Project\\GuideU Web App\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\asela\\source\\repos\\GuideU-Project\\GuideU Web App\\GuideU Web App.csproj",
-        "projectName": "GuideU Web App",
-        "projectPath": "C:\\Users\\asela\\source\\repos\\GuideU-Project\\GuideU Web App\\GuideU Web App.csproj",
+        "projectUniqueName": "C:\\Users\\asela\\source\\repos\\GuideU-Project\\GuideU Web App\\BackEnd.csproj",
+        "projectName": "BackEnd",
+        "projectPath": "C:\\Users\\asela\\source\\repos\\GuideU-Project\\GuideU Web App\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\asela\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\asela\\source\\repos\\GuideU-Project\\GuideU Web App\\obj\\",
         "projectStyle": "PackageReference",

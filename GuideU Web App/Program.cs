@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging; 
 
-namespace GuideU_Web_App
+namespace BackEnd
 {
     public class Program
     {

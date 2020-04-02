@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GuideU_Web_App.Models
+namespace BackEnd.Models
 {
     public class LoginModel
     {

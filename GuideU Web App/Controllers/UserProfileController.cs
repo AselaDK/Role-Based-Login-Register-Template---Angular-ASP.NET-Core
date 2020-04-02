@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GuideU_Web_App.Models;
+using BackEnd.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 // for secure routes
 
-namespace GuideU_Web_App.Controllers
+namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>GuideU_Web_App</RootNamespace>
+    <RootNamespace>BackEnd</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
